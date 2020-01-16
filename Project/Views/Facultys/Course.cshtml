@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FacultyCourse</title>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/styles/navbar.css" rel="stylesheet" />
+
+</head>
+<body>
+    @if ((string)@Session["check"] == "opertion faild course")
+    {
+        <script style="color:white" type="text/javascript ">
+            alert("You have been choosen a wrong course!");
+        </script>
+    }
+<div>
+    <div class="navbar">
+        <a href="/Account/FacultyHomePage" class="Button">Home</a>
+        <a href="/Facultys/Register" class="Button">Register</a>
+        <a href="/Facultys/Course" class="Button">Update grade</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">
+                ADD
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/Facultys/FacultyUpdateExamsSchedule" class="Button">Exams Dates</a>
+                <a href="/Facultys/Student" class="Button">Student to course</a>
+                <a href="/Facultys/FacultyAddCourse" class="Button">Add New Course</a>
+            </div>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a href="/Account/Login" class="navbar-brand"><strong>Logout</strong></a>
+        </div>
+    </div>
+    <form action="Editcourse" method="post" style="color:white">
+        Choose a course you'd like to change grades.
+        <div class="pass-w3l">
+            <input class="pass" type="text" name="CourseID" placeholder="Enter Course ID" required="">
+        </div>
+        <input type="submit" value="Submit" ,name="">
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>FacultyCourse</title>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/styles/navbar.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</head>
+<body>
+    @if ((string)@Session["check"] == "opertion faild id")
+    {
+        <script style="color:white" type="text/javascript ">
+            alert("User ID is already exists");
+        </script>
+    }
+    @if ((string)@Session["check"] == "opertion faild type")
+    {
+        <script style="color:white" type="text/javascript ">
+            alert("Type is incorrect");
+        </script>
+    }
+    @if ((string)@Session["check"] == "opertion sucessed")
+    {
+<script style="color:white" type="text/javascript ">
+            alert("New user create" + @Session["new"] ;
+</script>
+    }
+    <div>
+        <div class="navbar">
+            <a href="/Account/FacultyHomePage" class="Button">Home</a>
+            <a href="/Facultys/Register" class="Button">Register</a>
+            <a href="/Facultys/Course" class="Button">Update grade</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    ADD
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/Facultys/FacultyUpdateExamsSchedule" class="Button">Exams Dates</a>
+                    <a href="/Facultys/Student" class="Button">Student to course</a>
+                    <a href="/Facultys/FacultyAddCourse" class="Button">Add New Course</a>
+                </div>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <a href="/Account/Login" class="navbar-brand"><strong>Logout</strong></a>
+            </div>
+        </div>
+        <center>
+            <form action="Register" method="post" style="color:white">
+                Creating a new user.
+                In order to create a new user, you must define user type.<br />
+                There are 3 user types available :<br />
+                student, lecturer, faculty.
+                <div class="pass-w3l">
+                    <input class="pass" type="number" name="userID" placeholder="Enter new User ID" required="" />
+                    <input class="pass" type="text" name="username" placeholder="Enter new Username" required="" pattern="{a-zA-Z}{1,9}"minlength="3" />
+                    <input class="pass" type="text" name="password" placeholder="Enter new Password" required="" minlength="3" />
+                    <input class="pass" type="text" name="type" placeholder="Enter type of user" required="" />
+                    <input class="pass" type="text" name="FirstName" placeholder="Enter First Name" required="" />
+                    <input class="pass" type="text" name="LastName" placeholder="Enter Last Name" required="" />
+                </div>
+                <input type="submit" value="Add new user" name="" />
+            </form>
+        </center>
+    </div>
+
+</body>
+</html>

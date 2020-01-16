@@ -1,0 +1,48 @@
+﻿@model Project.Models.Account
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FacultyHomePage</title>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/styles/navbar.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        <div class="navbar">
+            <a href="/Account/FacultyHomePage" class="Button">Home</a>
+            <a href="/Facultys/Register" class="Button">Register</a>
+            <a href="/Facultys/Course" class="Button">Update grade</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    ADD
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/Facultys/FacultyUpdateExamsSchedule" class="Button">Exams Dates</a>
+                    <a href="/Facultys/Student" class="Button">Student to course</a>
+                    <a href="/Facultys/FacultyAddCourse" class="Button">Add New Course</a>
+                </div>
+            </div>
+            <div class="nav navbar-nav navbar-right" style="text-align: right; width: 100%";>
+                <a href="/Account/Login" class="navbar-brand"><strong>Logout</strong></a>
+            </div>
+        </div>
+        <h3 style="color:white">Date : @DateTime.Now</h3>
+        <h1> Welcome @Session["Username"]</h1>
+        <h3 style="color:white">
+            This is the home page.<br />
+            In here you can access all the information you need.<br />
+            From the Schedule page of yours to other information like Exams, Chat and Courses.<br />
+            We hope you enjoy your staying and visit more often.<br />
+            Team AY.
+        </h3>
+    </div>
+</body>
+</html>
+

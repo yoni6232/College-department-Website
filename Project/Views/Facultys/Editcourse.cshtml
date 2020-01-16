@@ -1,0 +1,158 @@
+﻿@using Project.Models;
+@model Project.Models.Editcourse
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>LecturerCourse</title>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/styles/navbar.css" rel="stylesheet" />
+    <link href="~/styles/SelectStyle.css" rel="stylesheet" />
+    <style>
+        body {
+            background: url("../images/login-img.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: grey;
+        }
+    </style>
+
+</head>
+<body>
+    @if ((string)@Session["check"] == "opertion faild")
+    {
+        <script style="color:white" type="text/javascript ">
+            alert("you enter wrong grade");
+        </script>
+    }
+    @if ((string)@Session["check"] == "opertion faild course")
+    {
+        <script style="color:white" type="text/javascript ">
+            alert("You have been choosen a wrong course");
+        </script>
+    }
+<div>
+    <div class="navbar">
+        <a href="/Account/FacultyHomePage" class="Button">Home</a>
+        <a href="/Facultys/Register" class="Button">Register</a>
+        <a href="/Facultys/Course" class="Button">Update grade</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">
+                ADD
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/Facultys/FacultyUpdateExamsSchedule" class="Button">Exams Dates</a>
+                <a href="/Facultys/Student" class="Button">Student to course</a>
+                <a href="/Facultys/FacultyAddCourse" class="Button">Add New Course</a>
+            </div>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a href="/Account/Login" class="navbar-brand"><strong>Logout</strong></a>
+        </div>
+    </div>
+    <center>
+        <h1 style="color:white">Courses details</h1>
+        <table id="editcourse">
+            <tr style="color:white">
+                <th>Student ID</th>
+                <th>Course ID</th>
+                <th>Student Name</th>
+                <th>Student Lastname</th>
+                <th>Course Name</th>
+                <th>Grade A</th>
+                <th>Grade B</th>
+                <th>Final Grade</th>
+            </tr>
+            <strong style="color:white">
+                Hey @Session["Username"], These are the students you are currently teaching.
+            </strong>
+            <tr>
+                @if (Model != null)
+                {
+                    if (Model.editcourses2.Count > 0)
+                    {
+
+                        foreach (var item in Model.editcourses2)
+                        {
+                        <tr style="color:white">
+                            <td>@Html.DisplayFor(m => item.StudentID)</td>
+                            <td>@Html.DisplayFor(m => item.CourseID)</td>
+                            <td>@Html.DisplayFor(m => item.studentName)</td>
+                            <td>@Html.DisplayFor(m => item.studentlastName)</td>
+                            <td>@Html.DisplayFor(m => item.Coursename)</td>
+                            <td>@Html.DisplayFor(m => item.GradeA)</td>
+                            <td>@Html.DisplayFor(m => item.GradeB)</td>
+                            @if (item.GradeB != 0)
+                            {
+                            <td>@Html.DisplayFor(m => item.GradeB)</td>
+
+                            }
+                            else
+                            {
+                            <td>@Html.DisplayFor(m => item.GradeA)</td>
+
+                            }
+
+                        </tr>
+                    }
+
+                }
+            }
+
+
+            </table>
+        </center>
+        <form action="Editcourse" method="post" style="color:white">
+            Choose a course you'd like to change grades.
+            <div class="pass-w3l">
+                <input class="pass" type="text" name="CourseID" placeholder="Enter Course ID" required="">
+            </div>
+            <input type="submit" value="Submit" ,name="">
+        </form>
+        <form action="AddGrade" method="post" style="color:white">
+            Place a grade upon a student.
+            <div class="pass-w3l">
+                <input class="pass" type="text" name="StudentID" placeholder="Enter Student ID" required="" />
+                <input class="pass" type="text" name="GradeA" placeholder="Exam A Grade 0-100" maxlength="3" pattern="^[1-9][0-9]?$|^100$|^0$"  />
+                <input class="pass" type="text" name="GradeB" placeholder="Exam A Grade 0-100" maxlength="3" pattern="^[1-9][0-9]?$|^100$|^0$"  />
+            </div>
+            <input type="submit" value="Add Grade" name="" />
+        </form>
+
+    </div>
+
+
+    </body>
+</html>

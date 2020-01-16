@@ -1,0 +1,103 @@
+﻿@model  Project.Models.Courses
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentCourse</title>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/styles/For tables.css" rel="stylesheet" />
+    <link href="~/styles/navbar.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: url("../images/login-img.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    @if ((string)@Session["check"] == "opertion faild course")
+    {
+        <script style="color:white" type="text/javascript ">
+            alert("This course dont exists");
+        </script>
+    }
+    <div>
+        <div class="navbar">
+            <a href="/Account/FacultyHomePage" class="Button">Home</a>
+            <a href="/Facultys/Register" class="Button">Register</a>
+            <a href="/Facultys/Course" class="Button">Update grade</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    ADD
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/Facultys/FacultyUpdateExamsSchedule" class="Button">Exams Dates</a>
+                    <a href="/Facultys/Student" class="Button">Student to course</a>
+                    <a href="/Facultys/FacultyAddCourse" class="Button">Add New Course</a>
+                </div>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <a href="/Account/Login" class="navbar-brand"><strong>Logout</strong></a>
+            </div>
+        </div>
+        <center style="color:white">
+            <h2>Update Exams Dates</h2>
+            <div class="btn-group">
+                <form action="/Facultys/FacultyUpdateExamsSchedule" method="post">
+                    <div class=" pass-w3l">
+                        Course id: <input class="pass" type="text" name="CourseIdTB" placeholder="" required="">
+                        <br />            <h2>Moed A:</h2>
+                        date: <br /> day: <input class="pass" type="text" name="MoedADay" placeholder="" required="" pattern="^(([0]?[1-9])|([1-2][0-9])|(3[01]))$"> month:<input class="pass" type="text" name="moedAMonth" placeholder="" required="" pattern="^(0?[1-9]|1[012])$">  year:<input class="pass" type="text" name="moedAYear" placeholder="" required="" pattern="^(19|20)\d{2}$">
+                        <br /><button>Update Moed A</button>
+                    </div>
+                    <br />
+                </form>
+                <form action="/Facultys/FacultyUpdateExamsSchedule" method="post">
+                    <div class=" pass-w3l">
+                        Course id: <input class="pass" type="text" name="CourseIdTB" placeholder="" required="">
+                        <br />            <h2>Moed B:</h2>
+                        date: <br /> day:<input class="pass" type="text" name="moedBDay" placeholder="" required="" pattern="^(([0]?[1-9])|([1-2][0-9])|(3[01]))$"> month:<input class="pass" type="text" name="moedBMonth" placeholder="" required="" pattern="^(0?[1-9]|1[012])$">  year:<input class="pass" type="text" name="moedBYear" placeholder="" required="" pattern="^(19|20)\d{2}$">
+                        <br /><button>Update Moed B</button>
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </center>
+    </div>
+
+</body>
+</html>

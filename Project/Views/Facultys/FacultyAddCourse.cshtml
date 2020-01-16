@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Faculty Add Course</title>
+    <link href="~/styles/font-awesome.min.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/styles/For tables.css" rel="stylesheet" />
+    <link href="~/styles/navbar.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        body {
+            background: url("../images/login-img.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    @if ((string)@Session["check"] == "opertion faild hour")
+    {
+    <script style="color:white" type="text/javascript ">
+        alert("The lecturer alredy signed to the course with same hour and date");
+    </script>
+    }
+    @if ((string)@Session["check"] == "opertion succesed")
+    {
+<script style="color:white" type="text/javascript ">
+            alert("Successed");
+</script>
+    }
+    @if ((string)@Session["check"] == "opertion faild lec")
+    {
+<script style="color:white" type="text/javascript ">
+            alert("The Lecturer does not exsist");
+</script>
+    } @if ((string)@Session["check"] == "opertion faild course")
+    {
+<script style="color:white" type="text/javascript ">
+            alert("The course already exists");
+</script>
+    }
+<div>
+    <div class="navbar">
+        <a href="/Account/FacultyHomePage" class="Button">Home</a>
+        <a href="/Facultys/Register" class="Button">Register</a>
+        <a href="/Facultys/Course" class="Button">Update grade</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">
+                ADD
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/Facultys/FacultyUpdateExamsSchedule" class="Button">Exams Dates</a>
+                <a href="/Facultys/Student" class="Button">Student to course</a>
+                <a href="/Facultys/FacultyAddCourse" class="Button">Add New Course</a>
+            </div>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a href="/Account/Login" class="navbar-brand"><strong>Logout</strong></a>
+        </div>
+    </div>
+    <center style="color:white">
+        <h2>Add New Course:</h2>
+        <div class="btn-group">
+            <form action="FacultyAddCourse" method="post">
+                <div class=" pass-w3l">
+                    <br />Course id: <input class="pass" type="number" name="CourseId" placeholder="" required="" pattern="[0-9]{1,50}">
+                    course Name: <input class="pass" type="text" name="CourseName" placeholder="" required="" pattern="[a-zA-z]{1,50}">
+                    <br />Lecturer id: <input class="pass" type="number" name="LecturerId" placeholder="" required="" pattern="[0-9]{1,50}">
+                    <br /> Day: <input class="pass" type="text" name="Day" placeholder="" required="" pattern="[a-zA-z]{1,9}">
+                    <br />Start Hour: <input class="pass" type="time" name="StartHour" placeholder="" required="">
+                    End Hour: <input class="pass" type="time" name="EndHour" placeholder="" required="">
+                    <br />Exam A date:  <br /> day:<input class="pass" type="number" name="moedADay" placeholder="1-31" required="" pattern="" minlength="1" maxlength="2"> month:<input class="pass" type="number" name="moedAMonth" placeholder="1-12" required="" pattern="" maxlength="2">  year:<input class="pass" type="number" name="moedAYear" placeholder="2020-2999" required="" pattern="" maxlength="4">
+                    moed A Class: <input class="pass" type="text" name="MoedAClass" placeholder="" required="">
+                    <br />Exam B date:  <br /> day:<input class="pass" type="number" name="moedBDay" placeholder="1-31" required="" pattern="" minlength="1" maxlength="2"> month:<input class="pass" type="number" name="moedBMonth" placeholder="1-12" required="" pattern="" maxlength="2">  year:<input class="pass" type="number" name="moedBYear" placeholder="2020-2999" required="" pattern="" maxlength="4">
+                    moed B Class: <input class="pass" type="text" name="MoedBClass" placeholder="" required="">
+                </div>
+                <br />
+                <button>Submit</button>
+
+        </div>
+    </center>
+</div>
+
+</body>
+</html>
